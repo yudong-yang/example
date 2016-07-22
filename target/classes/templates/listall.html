@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <title>List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    
+    <script language="javascript"> 
+    function delcfm() { 
+        if (!confirm("确认要删除？")) { 
+            window.event.returnValue = false; 
+        } 
+    } 
+</script>
+
+<script type="text/javascript">
+	function jump(){
+		// 获得用户输入页码
+		var pNum = document.getElementById("pNum").value;
+		location.href="/user/listbyid/"+pNum;
+	}
+</script>
+
+
+
+<!-- CSS goes in the document HEAD or added to your external stylesheet -->
+<style type="text/css">
+table.imagetable {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #999999;
+	border-collapse: collapse;
+}
+table.imagetable th {
+	background:#b5cfd2 url('cell-blue.jpg');
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #999999;
+}
+table.imagetable td {
+	background:#dcddc0 url('cell-grey.jpg');
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #999999;
+}
+</style>
+
+<!-- Table goes in the document BODY -->
+  </head>
+
+  <body>
+<table class="imagetable">
+    <tr>
+      <th>id</th>
+      <th>name</th>
+      <th>PASSWORD</th>
+      <th>Process</th>
+    </tr>
+    <tr th:each="user: ${list}">
+      <td th:text="${user.getId()}">Onions</td>
+      <td th:text="${user.getName()}">2.41</td>
+      <td th:text="${user.getPassword()}">yes</td>
+      <td ><a href="#" th:href="@{'/user/delete/'+${user.getId()}(curpage=${currentpage})}" th:text="删除" onClick="delcfm()"></a></td>
+    </tr>
+    <tr>
+    <td>共：<a th:text="${num}"></a> 页 </td>
+  <td><a href="#" th:href="@{'/user/listbyid/'+${currentpage-1}}"  th:text="上一页" th:if="${currentpage !=1}">上一页</a></td>
+  <td><a href="#" th:href="@{'/user/listbyid/'+${currentpage+1}}"  th:text="下一页" th:if="${currentpage lt num}">下一页</a></td>
+    <td>当前是第 <a th:text="${currentpage}"></a>页 </td>   
+    </tr>
+  </table>
+     <input type="text" id="pNum" size="3" th:if="${currentpage lt num}"/><input type="button" value="跳转" onclick="jump();"/>
+       
+  </body>
+
+</html>
