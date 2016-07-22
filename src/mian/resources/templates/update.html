@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <title>List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <link rel="stylesheet" href="/css/style.css"/>
+  <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+  <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+  <script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+  <div class="page-header">
+    <h1>更新页面 </h1>
+    
+    <form action="#" th:action="@{/update/id}" th:object="${user}" method="get">
+     <input type="text" id="id" size="3"  th:field="*{id}" />
+      <input type="text" id="name" size="3"  th:field="*{name}" />
+       <input type="text" id="password" size="3"  th:field="*{passWord}" />
+    
+    <input type = "submit" value="提交"/>
+    
+    </form>
+  </div>
+
+  </body>
+
+</html>

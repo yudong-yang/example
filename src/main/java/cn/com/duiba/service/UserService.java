@@ -88,7 +88,7 @@ public class UserService {
 	    } 
 	 
 		/**
-		 * 插入操作
+		 * 更新操作
 		 * @param user
 		 */
 		 public void updata(Users user){

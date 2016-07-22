@@ -46,18 +46,23 @@ public class UserController {
     }  
     
     
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
+    public String updateByid(@PathVariable("id") int id,Model model, @RequestParam("name") String name, @RequestParam("passWord") String passWord){
+        logger.info("更新操作");
+        Users u = new Users();
+		u.setId(id);
+		u.setName(name);
+		u.setPassword(passWord);
+		userservice.updata(u);
+	    return "redirect:/user/list" ;
+    } 
+    
+    
+    
     @RequestMapping("/update")
     public String update(){
         logger.info("更新数据");
-        
-      
-			Users u = new Users();
-			u.setId(29);
-			u.setName("小明");
-			u.setPassword(10+"密码");
-			userservice.updata(u);
-		
-        return "success";
+        return "update";
     }  
     
     
