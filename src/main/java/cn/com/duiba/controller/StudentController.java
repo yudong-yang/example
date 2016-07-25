@@ -7,10 +7,11 @@ import org.slf4j.LoggerFactory;
 import cn.com.duiba.entity.Student;
 import cn.com.duiba.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 @RequestMapping("/stu")
 public class StudentController {
 
@@ -20,8 +21,32 @@ public class StudentController {
     private StudentService studentService;
 
     @RequestMapping("/list")
-    public List<Student> getStus(){
+    public String ListStudent(Model model){
         logger.info("从数据库读取Student集合");
-        return studentService.getList();
+        List<Student> list = studentService.getList();
+        model.addAttribute("list", list);
+        return "liststu";
     }
+    
+    @RequestMapping("/insert")
+    public String insert(){
+        logger.info("往表中插入数据");
+        
+        for (int i = 1; i <100; i++) {
+        	Student stu = new Student();
+        	stu.setName("小明"+i);
+        	stu.setAge(28);
+        	stu.setBirthday(studentService.getdate());
+        	stu.setChina(98.3);
+        	stu.setMath(80.6);
+        	stu.setEnglish(88.6);
+        	stu.setHistory(78.6);
+        	stu.setAvgScore(studentService.avgScore(stu.getChina(), stu.getMath(), stu.getEnglish(), stu.getHistory()));
+        	stu.setSumScore(studentService.sumScore(stu.getChina(), stu.getMath(), stu.getEnglish(), stu.getHistory()));
+			studentService.insert(stu);
+		}
+//        return "redirect:/stu/list";
+        return "success";
+    }   
+  
 }

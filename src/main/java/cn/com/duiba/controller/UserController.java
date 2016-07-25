@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import cn.com.duiba.entity.Users;
 import cn.com.duiba.service.UserService;
 
@@ -35,7 +34,7 @@ public class UserController {
     public String insert(){
         logger.info("往表中插入数据");
         
-        for (int i = 1; i <60000; i++) {
+        for (int i = 1; i <600; i++) {
 			Users u = new Users();
 			u.setId(i);
 			u.setName("小明"+i);
@@ -43,26 +42,6 @@ public class UserController {
 			userservice.insert(u);
 		}
         return "success";
-    }  
-    
-    
-    @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
-    public String updateByid(@PathVariable("id") int id,Model model, @RequestParam("name") String name, @RequestParam("passWord") String passWord){
-        logger.info("更新操作");
-        Users u = new Users();
-		u.setId(id);
-		u.setName(name);
-		u.setPassword(passWord);
-		userservice.updata(u);
-	    return "redirect:/user/list" ;
-    } 
-    
-    
-    
-    @RequestMapping("/update")
-    public String update(){
-        logger.info("更新数据");
-        return "update";
     }  
     
     
@@ -88,7 +67,7 @@ public class UserController {
     }
     
     
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+  @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String deleteByid(@PathVariable("id") int id,Model model, @RequestParam("curpage") String curpage){
         logger.info("逐条删除");
 	    userservice.delete(id);
@@ -106,4 +85,36 @@ public class UserController {
         model.addAttribute("num", num/10+1);
         return "listall";
     } 
+    
+    
+    
+    /**
+     * 保存修改数据
+     * @param user
+     * @param model
+     * @return
+     */
+     
+     @RequestMapping(value = "/update", method = RequestMethod.POST)
+     public String bb(Users user, Model model) {
+     	model.addAttribute("user", user);
+     	userservice.updata(user);
+         return "success";
+     }
+     
+     /**
+      * 跳转修改页面
+      * @param id
+      * @param model
+      * @return
+      */
+     
+     @RequestMapping("/update/{id}")
+     public String update(@PathVariable("id") int id , Model model){
+         logger.info("更新数据");
+         Users user = new Users();
+         user = userservice.selectById(id);
+         model.addAttribute("user",user);
+         return "update";
+     }      
 }

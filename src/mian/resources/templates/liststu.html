@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <title>分页显示列表</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    
+    <link rel="stylesheet" href="/css/style.css"/>
+  <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+  <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+  <script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script language="javascript"> 
+    function delcfm() { 
+        if (!confirm("确认要删除？")) { 
+            window.event.returnValue = false; 
+        } 
+    } 
+</script>
+
+<script type="text/javascript">
+	function jump(){
+		// 获得用户输入页码
+		var pNum = document.getElementById("pNum").value;
+		location.href="/user/listbyid/"+pNum;
+	}
+</script>
+
+
+
+<!-- CSS goes in the document HEAD or added to your external stylesheet -->
+
+
+<!-- Table goes in the document BODY -->
+  </head>
+
+  <body>
+  
+  <div class="container" align="center">
+
+  <div class="page-header">
+    <h1>学生列表展示 </h1>
+     <h1> <small>分页展示学生列表页面</small> </h1>
+  </div>
+  
+<table class="imagetable" >
+    <tr class="sidebar-module">
+      <th>ID</th>
+      <th>NAME</th>
+      <th>AGE</th>
+      <th>BIRTHDAY</th>
+        <th>CHINA</th>
+      <th>MATH</th>
+      <th>ENGLISH</th>
+      <th>HISTORY</th>
+      <th>SUMSCORE</th>
+      <th>AVGSCORE</th>
+    </tr>
+    <tr th:each="stu: ${list}" class="sidebar-module">
+      <td th:text="${stu.getId()}">123</td>
+      <td th:text="${stu.getName()}">Onions</td>
+      <td th:text="${stu.getAge()}">Onions</td>
+      <td th:text="${stu.getBirthday()}">Onions</td>
+      <td th:text="${stu.getChina()}">2.41</td>
+      <td th:text="${stu.getMath()}">yes</td>
+      <td th:text="${stu.getEnglish()}">Onions</td>
+      <td th:text="${stu.getHistory()}">2.41</td>
+      <td th:text="${stu.getSumScore()}">yes</td>
+      <td th:text="${stu.getAvgScore()}">yes</td>
+    </tr>
+  </table>
+  
+   </div>    
+  </body>
+
+</html>
