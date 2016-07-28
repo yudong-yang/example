@@ -72,13 +72,13 @@ public class Student implements Serializable{
 		this.history = history;
 	}
 	public double getSumScore() {
-		return sumScore;
+		return getEnglish()+getMath()+getChina()+getHistory() ;
 	}
 	public void setSumScore(double sumScore) {
 		this.sumScore = sumScore;
 	}
 	public double getAvgScore() {
-		return avgScore;
+		return (getEnglish()+getMath()+getChina()+getHistory())/4;
 	}
 	public void setAvgScore(double avgScore) {
 		this.avgScore = avgScore;

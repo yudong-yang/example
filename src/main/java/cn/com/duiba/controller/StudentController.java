@@ -36,17 +36,15 @@ public class StudentController {
         	Student stu = new Student();
         	stu.setName("小明"+i);
         	stu.setAge(28);
-        	stu.setBirthday(studentService.getdate());
+        	stu.setBirthday(studentService.getdate("1988-09-08"));
         	stu.setChina(98.3);
         	stu.setMath(80.6);
         	stu.setEnglish(88.6);
         	stu.setHistory(78.6);
-        	stu.setAvgScore(studentService.avgScore(stu.getChina(), stu.getMath(), stu.getEnglish(), stu.getHistory()));
-        	stu.setSumScore(studentService.sumScore(stu.getChina(), stu.getMath(), stu.getEnglish(), stu.getHistory()));
 			studentService.insert(stu);
 		}
-//        return "redirect:/stu/list";
-        return "success";
+        return "redirect:/stu/list";
+        //return "success";
     }   
   
 }

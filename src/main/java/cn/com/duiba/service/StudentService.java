@@ -68,11 +68,11 @@ public class StudentService {
 	}
 
 	
-	  public Date getdate(){
+	  public Date getdate(String timeformat){
 		    SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 		    Date date;
 			try {
-				date = sdf.parse("1994-4-4");
+				date = sdf.parse(timeformat);
 				return date;
 			} catch (ParseException e) {
 				e.printStackTrace();
