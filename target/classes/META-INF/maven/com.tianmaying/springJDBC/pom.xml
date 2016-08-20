@@ -23,12 +23,27 @@
   </properties>
 
   
-  <repositories>
- <repository>
- <id>cn.com.duiba</id>
- <url>http://nexus.dui88.com/nexus/</url>
- </repository> 
-</repositories>
+
+   <repositories>  
+        <repository>  
+            <snapshots>  
+               <enabled>true</enabled>  
+            </snapshots>  
+            <id>cn.com.duiba</id>  
+            <name>cn.com.duiba</name>  
+            <url>http://nexus.dui88.com/nexus/</url>  
+        </repository>  
+    </repositories>  
+    <pluginRepositories>  
+        <pluginRepository>  
+            <id>cn.com.duiba</id>  
+            <name>cn.com.duiba</name>  
+            <url>http://nexus.dui88.com/nexus/</url>  
+        </pluginRepository>  
+    </pluginRepositories>
+
+
+
   
   
   <dependencies>
@@ -45,7 +60,7 @@
       <artifactId>guava</artifactId>
       <version>18.0</version>
     </dependency>
-
+    
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
@@ -74,6 +89,40 @@
     <artifactId>org.apache.commons.codec</artifactId>
     <version>1.3</version>
 </dependency>
+
+<!-- jpa 依赖 -->
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-data-jpa</artifactId>
+</dependency>
+<dependency>
+  <groupId>com.h2database</groupId>
+  <artifactId>h2</artifactId>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpcore -->
+<dependency>
+    <groupId>org.apache.httpcomponents</groupId>
+    <artifactId>httpcore</artifactId>
+    <version>4.3.2</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+<dependency>
+    <groupId>org.apache.httpcomponents</groupId>
+    <artifactId>httpclient</artifactId>
+    <version>4.5.1</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+<dependency>
+    <groupId>com.alibaba</groupId>
+    <artifactId>fastjson</artifactId>
+    <version>1.1.15</version>
+</dependency>
+
+
+
 
   </dependencies>
 

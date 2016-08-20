@@ -99,7 +99,7 @@ public class UserController {
      public String bb(Users user, Model model) {
      	model.addAttribute("user", user);
      	userservice.updata(user);
-         return "success";
+         return "redirect:/user/list";
      }
      
      /**

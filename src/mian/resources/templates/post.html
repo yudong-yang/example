@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+<title>List</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="stylesheet"
+	href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<div class="page-header">
+		<h1>列表页面</h1>
+		<table class="imagetable">
+			<tr class="sidebar-module">
+				<th>id</th>
+				<th>title</th>
+				<th>content</th>
+				<th>Create</th>
+			</tr>
+			<tr th:each="post: ${posts}" class="sidebar-module">
+				<td th:text="${post.getId()}">Onions</td>
+				<td th:text="${post.getTitle()}">Onions</td>
+				<td th:text="${post.getContent()}">2.41</td>
+				<td th:text="${post.getCreated()}">yes</td>
+			</tr>
+		</table>
+	</div>
+
+</body>
+
+</html>

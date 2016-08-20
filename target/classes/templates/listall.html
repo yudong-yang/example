@@ -9,15 +9,15 @@
   <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
   <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
   <script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <script language="javascript"> 
-    function delcfm() { 
-        if (!confirm("确认要删除？")) { 
-            window.event.returnValue = false; 
-        } 
-    } 
-</script>
+
 
 <script type="text/javascript">
+function delcfm() { 
+    if (!confirm("确认要删除？")) { 
+        window.event.returnValue = false; 
+    } 
+}
+
 	function jump(){
 		// 获得用户输入页码
 		var pNum = document.getElementById("pNum").value;
@@ -66,7 +66,7 @@
     </tr>
     <tr >
     <td class="row" align="right" colspan="4" th:if="${currentpage lt num}">
-     <input type="text" id="pNum" size="3" /><input type="button" value="跳转" onclick="jump();"/>
+     <input type="text" id="pNum" size="3" /><input type="button" value="跳转" onclick="jump()"/>
      </td>
     </tr>
   </table>
