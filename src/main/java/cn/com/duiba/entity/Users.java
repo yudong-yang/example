@@ -1,9 +1,22 @@
 package cn.com.duiba.entity;
 
+
+import javax.persistence.*;
+
+@Entity
 public class Users {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String name;
 	private String password;
+	
+	public Users(){};
+	
+	public Users(String name , String password){
+		this.name = name;
+		this.password = password;
+	}
 	public int getId() {
 		return id;
 	}

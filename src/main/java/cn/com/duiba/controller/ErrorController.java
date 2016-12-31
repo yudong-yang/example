@@ -9,11 +9,11 @@ public class ErrorController {
 
     @RequestMapping("/404")
     public String notFound() {
-        return "/error/404";
+        return "error/404";
     }
     
     @RequestMapping("/500")
     public String ServerError() {
-        return "/error/500";
+        return "error/500";
     }
 }

@@ -22,7 +22,9 @@ public class UserController {
 
     @Autowired
     private UserService userservice;
-
+    
+  
+    
     @RequestMapping("/list/{id}")
     public String selectId(@PathVariable("id") int id,Model model){
         logger.info("从数据库读取Student集合");
@@ -99,7 +101,7 @@ public class UserController {
      public String bb(Users user, Model model) {
      	model.addAttribute("user", user);
      	userservice.updata(user);
-         return "redirect:/user/list";
+         return "redirect:/user/list" ;
      }
      
      /**

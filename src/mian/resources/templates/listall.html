@@ -55,7 +55,7 @@ function delcfm() {
       <td th:text="${user.getPassword()}">yes</td>
       <td >
       <a href="#" th:href="@{'/user/delete/'+${user.getId()}(curpage=${currentpage})}" th:text="删除" onClick="delcfm()"></a>
-      ||<a href="#" th:href="@{'/user/update/'+${user.getId()}}" th:text="编辑" ></a>
+      ||<a href="#" th:href="@{'/user/update/'+${user.getId()}(curpage=${currentpage})}" th:text="编辑" ></a>
       </td>
     </tr>
     <tr>
